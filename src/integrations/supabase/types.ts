@@ -14,7 +14,201 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          created_at: string
+          first_choice_program_id: string | null
+          id: string
+          notes: string | null
+          program_id: string
+          registration_number: string | null
+          review_date: string | null
+          second_choice_program_id: string | null
+          status: string | null
+          submission_date: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          first_choice_program_id?: string | null
+          id?: string
+          notes?: string | null
+          program_id: string
+          registration_number?: string | null
+          review_date?: string | null
+          second_choice_program_id?: string | null
+          status?: string | null
+          submission_date?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          first_choice_program_id?: string | null
+          id?: string
+          notes?: string | null
+          program_id?: string
+          registration_number?: string | null
+          review_date?: string | null
+          second_choice_program_id?: string | null
+          status?: string | null
+          submission_date?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_first_choice_program_id_fkey"
+            columns: ["first_choice_program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "applications_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "applications_second_choice_program_id_fkey"
+            columns: ["second_choice_program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      documents: {
+        Row: {
+          application_id: string
+          document_type: string
+          file_name: string
+          file_path: string
+          file_size: number | null
+          id: string
+          mime_type: string | null
+          uploaded_at: string
+          user_id: string
+        }
+        Insert: {
+          application_id: string
+          document_type: string
+          file_name: string
+          file_path: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          uploaded_at?: string
+          user_id: string
+        }
+        Update: {
+          application_id?: string
+          document_type?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          uploaded_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          city: string | null
+          created_at: string
+          date_of_birth: string | null
+          full_name: string
+          id: string
+          nik: string | null
+          phone: string | null
+          postal_code: string | null
+          province: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name: string
+          id?: string
+          nik?: string | null
+          phone?: string | null
+          postal_code?: string | null
+          province?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string
+          id?: string
+          nik?: string | null
+          phone?: string | null
+          postal_code?: string | null
+          province?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          accreditation: string | null
+          created_at: string
+          degree_level: string
+          description: string | null
+          faculty: string
+          id: string
+          name: string
+          quota: number | null
+          requirements: string | null
+          tuition_fee: number | null
+        }
+        Insert: {
+          accreditation?: string | null
+          created_at?: string
+          degree_level: string
+          description?: string | null
+          faculty: string
+          id?: string
+          name: string
+          quota?: number | null
+          requirements?: string | null
+          tuition_fee?: number | null
+        }
+        Update: {
+          accreditation?: string | null
+          created_at?: string
+          degree_level?: string
+          description?: string | null
+          faculty?: string
+          id?: string
+          name?: string
+          quota?: number | null
+          requirements?: string | null
+          tuition_fee?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
